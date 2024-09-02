@@ -20,6 +20,7 @@ export interface SocialMediaItem {
     contactInformation: string;
     email: string;
     address: string;
+    profilePicture: string;
     socialMedia: SocialMediaItem[];  // Updated to use SocialMediaItem array
     summary: string;
     education: EducationItem[];

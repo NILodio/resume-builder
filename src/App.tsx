@@ -47,7 +47,10 @@ const App: React.FC = () => {
       <MainWrap>
         <Flex direction={{ base: 'column', md: 'row' }} gap={4} p={4}>
           {!formClose && (
-            <Box>
+            <Box
+            maxH="100vh"
+            overflowY="auto"
+          >
               <PersonalInformation />
               <SocialMedia />
               <Summary />
