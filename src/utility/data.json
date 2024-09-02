@@ -1,34 +1,34 @@
-const DefaultResumeData = {
-    name: "MARCUS HALL",
-    position: "Developer",
-    contactInformation: "+1-555-0100",
-    email: "beddylea@gmail.com",
-    address: "San Francisco, CA",
-    profilePicture: "",
-    socialMedia: [
+{
+    "name": "MARCUS HALL",
+    "position": "Developer",
+    "contactInformation": "+1-555-0100",
+    "email": "beddylea@gmail.com",
+    "address": "San Francisco, CA",
+    "profilePicture": "",
+    "socialMedia": [
       {
-        socialMedia: "Github",
-        link: "github.com//bedivere-lea",
+        "socialMedia": "Github",
+        "link": "github.com//bedivere-lea"
       },
       {
-        socialMedia: "LinkedIn",
-        link: "linkedin.com/in/bedivere-lea",
+        "socialMedia": "LinkedIn",
+        "link": "linkedin.com/in/bedivere-lea"
       },
       {
-        socialMedia: "Website",
-        link: "bedivere-lea.github.io",
-      },
+        "socialMedia": "Website",
+        "link": "bedivere-lea.github.io"
+      }
     ],
-    summary: "Resourceful Developer with 11 years of experience in designing and developing user interfaces, testing and training employees. Skilled at utilizing a wide variety of tools and programs to provide effective applications.",
-    education: [
+    "summary": "Resourceful Developer with 11 years of experience in designing and developing user interfaces, testing and training employees. Skilled at utilizing a wide variety of tools and programs to provide effective applications.",
+    "education": [
       {
         "school": "Bachelor of Computer Science",
         "degree": "New York University",
         "startYear": "2020-08-20",
         "endYear": "2024-07-01"
-      },
+      }
     ],
-    workExperience: [
+    "workExperience": [
       {
         "company": "Torph TTC",
         "position": "Developer",
@@ -54,35 +54,48 @@ const DefaultResumeData = {
         "endYear": "2023-03-09"
       }
     ],
-    projects: [],
-    skills: [
+    "projects": [],
+    "skills": [
       {
-        title: "Technical Skills",
-        skills: [
-          "JavaScript", "Python", "Web Services", "C++", "HTML5", "CSS", "SQL", "User Interface", "Creativity"
+        "title": "Technical Skills",
+        "skills": [
+          "JavaScript",
+          "Python",
+          "Web Services",
+          "C++",
+          "HTML5",
+          "CSS",
+          "SQL",
+          "User Interface",
+          "Creativity"
         ]
       },
       {
-        title: "Soft Skills",
-        skills: [
-          "Collaboration", "Problem-solving", "Communication", "Time management", "Result-oriented"
+        "title": "Soft Skills",
+        "skills": [
+          "Collaboration",
+          "Problem-solving",
+          "Communication",
+          "Time management",
+          "Result-oriented"
         ]
       },
       {
-        title: "Additional Skills",
-        skills: [
-          "Public Speaking", "Writing", "Research"
-        ] 
+        "title": "Additional Skills",
+        "skills": [
+          "Public Speaking",
+          "Writing",
+          "Research"
+        ]
       }
     ],
-    languages: [
+    "languages": [
       "English",
-      "Hindi",
+      "Hindi"
     ],
-    certifications: [
+    "certifications": [
       "Certified Web Professional-Web Developer",
-      "Java Development Certified Professional",
-    ],
-  };
+      "Java Development Certified Professional"
+    ]
+  }
   
-  export default DefaultResumeData;

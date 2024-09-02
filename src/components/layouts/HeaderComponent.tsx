@@ -1,4 +1,3 @@
-import React from "react";
 import { useColorMode } from "@chakra-ui/color-mode";
 import { Box, Flex, Text, Button } from "@chakra-ui/react";
 import { FaGithub } from "react-icons/fa";
@@ -23,7 +22,6 @@ const HeaderComponent = () => {
       <Flex
         justifyContent="space-between"
         align="center"
-        maxW="48rem"
         mx="auto"
         px={isDesktopWidth ? 4 : 6}
         py={3}

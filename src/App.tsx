@@ -1,140 +1,64 @@
+// src/App.tsx
 import {
-  Center,
-  Code,
   Flex,
-  Heading,
-  Stack,
-  Text,
   Box,
-  Button,
-  useBreakpointValue,
   useColorMode,
-  Image,
-  Link as ChakraLink,
-  FormControl,
-  useColorModeValue,
-  Icon,
-  Grid,
-  GridItem,
-  Divider,
-  FormLabel,
-  Input,
-} from "@chakra-ui/react";
-import { FaGithub, FaReact } from "react-icons/fa";
-import { SiChakraui, SiTypescript, SiVite } from "react-icons/si";
-import React, { useState, createContext, useContext } from "react";
-import MotionBox from "components/motion/MotionBox";
-import PersonalInformation from "components/form/PersonalInformation";
-import MainWrap from "components/wrapper/MainWrap";
-import { useDesktopWidthCheck } from "functions/helpers/desktopWidthChecker";
-import DefaultResumeData from "data/DefaultResumeData";
+  Text,
+} from '@chakra-ui/react';
+import React, { useState, createContext } from 'react';
+import MainWrap from './components/wrapper/MainWrap';
+import PersonalInformation from './components/form/PersonalInformation';
+import { ResumeContextType, ResumeData } from './types/resume';
+import Preview from './components/preview/Preview';
+import SocialMedia from './components/form/SocialMedia';
+import Summary from './components/form/Summary';
+import Education from './components/form/Education';
+import data from './utility/data.json';
 
-// Creating ResumeContext with default data
-const ResumeContext = createContext(DefaultResumeData);
+export const ResumeContext = createContext<ResumeContextType>({
+  resumeData: {} as ResumeData, // Default value should match the type
+  setResumeData: () => {},
+  handleChange: () => {},
+});
 
-function App() {
-  // Chakra hooks for color mode and responsive design
-  const { colorMode } = useColorMode();
-  const isDesktopWidth = useDesktopWidthCheck();
-  const textSize = useBreakpointValue({
-    base: "xs",
-    sm: "md",
-  });
+const App: React.FC = () => {
+  useColorMode();
+  const [resumeData, setResumeData] = useState<ResumeData>(data);
+  const [formClose] = useState<boolean>(false);
+  const [error] = useState<string | null>(null);
 
-  // State for resume data and form visibility
-  const [resumeData, setResumeData] = useState(DefaultResumeData);
-  const [formClose, setFormClose] = useState(false);
-
-  // Function to handle input changes
-  const handleChange = (e) => {
-    setResumeData({ ...resumeData, [e.target.name]: e.target.value });
-    console.log(resumeData);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setResumeData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  return (
-    <ResumeContext.Provider
-      value={{
-        resumeData,
-        setResumeData,
-        handleChange,
-      }}
-    >
+  if (error) {
+    return (
       <MainWrap>
-        <Flex>
+        <Flex justify="center" align="center" h="100vh">
+          <Text color="red.500">Error: {error}</Text>
+        </Flex>
+      </MainWrap>
+    );
+  }
+
+  return (
+    <ResumeContext.Provider value={{ resumeData, setResumeData, handleChange }}>
+      <MainWrap>
+        <Flex direction={{ base: 'column', md: 'row' }} gap={4} p={4}>
           {!formClose && (
-            <Box flex="0 1 auto" maxW="400px">
-            <FormControl flex="0 1 auto" maxW="1000px">
-              <Grid templateColumns="repeat(2, 1fr)" gap={4}>
-                <GridItem colSpan={2}>
-                  <FormLabel htmlFor="name">Full Name</FormLabel>
-                  <Input
-                    id="name"
-                    type="text"
-                    placeholder="Full Name"
-                    name="name"
-                    value={resumeData.name}
-                    onChange={handleChange}
-                  />
-                </GridItem>
-                <GridItem colSpan={1}>
-                  <FormLabel htmlFor="position">Job Title</FormLabel>
-                  <Input
-                    id="position"
-                    type="text"
-                    placeholder="Job Title"
-                    name="position"
-                    value={resumeData.position}
-                    onChange={handleChange}
-                  />
-                </GridItem>
-                <GridItem colSpan={1}>
-                  <FormLabel htmlFor="contactInformation">
-                    Contact Information
-                  </FormLabel>
-                  <Input
-                    id="contactInformation"
-                    type="text"
-                    placeholder="Contact Information"
-                    name="contactInformation"
-                    value={resumeData.contactInformation}
-                    onChange={handleChange}
-                    minLength={10}
-                    maxLength={15}
-                  />
-                </GridItem>
-                <GridItem colSpan={2}>
-                  <FormLabel htmlFor="email">Email</FormLabel>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="Email"
-                    name="email"
-                    value={resumeData.email}
-                    onChange={handleChange}
-                  />
-                </GridItem>
-                <GridItem colSpan={2}>
-                  <FormLabel htmlFor="address">Address</FormLabel>
-                  <Input
-                    id="address"
-                    type="text"
-                    placeholder="Address"
-                    name="address"
-                    value={resumeData.address}
-                    onChange={handleChange}
-                  />
-                </GridItem>
-              </Grid>
-            </FormControl>
+            <Box>
+              <PersonalInformation />
+              <SocialMedia />
+              <Summary />
+              <Education />
             </Box>
           )}
-          <Box flex="1 1 0" p={4}>
-            <Heading>Preview Section</Heading>
-          </Box>
+          <Preview />
         </Flex>
       </MainWrap>
     </ResumeContext.Provider>
   );
-}
+};
 
 export default App;

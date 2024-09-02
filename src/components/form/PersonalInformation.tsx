@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { ResumeContext } from "../../App";
+// src/components/PersonalInformation.tsx
+import React, { useContext } from 'react';
 import {
   FormControl,
   FormLabel,
@@ -7,17 +7,16 @@ import {
   Grid,
   GridItem,
   Heading,
-  useColorModeValue,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
+import { ResumeContext } from '../../App';
+import { ResumeContextType } from '../../types/resume';
 
-const PersonalInformation = () => {
-  const { resumeData, handleProfilePicture, handleChange } = useContext(ResumeContext);
+const PersonalInformation: React.FC = () => {
+  const { resumeData, handleChange } = useContext(ResumeContext) as ResumeContextType;
 
   return (
-    <FormControl as="fieldset" mb={8}>
-      <Heading as="h2" size="md" mb={4}>
-        Personal Information
-      </Heading>
+    <FormControl mb={3}>
+      <Heading size="md" mb={3}>Information</Heading>
       <Grid templateColumns="repeat(2, 1fr)" gap={4}>
         <GridItem colSpan={2}>
           <FormLabel htmlFor="name">Full Name</FormLabel>
@@ -26,29 +25,29 @@ const PersonalInformation = () => {
             type="text"
             placeholder="Full Name"
             name="name"
-            value={resumeData.name}
+            value={resumeData ? resumeData.name : ''}
             onChange={handleChange}
           />
         </GridItem>
-        <GridItem colSpan={2}>
+        <GridItem colSpan={1}>
           <FormLabel htmlFor="position">Job Title</FormLabel>
           <Input
             id="position"
             type="text"
             placeholder="Job Title"
             name="position"
-            value={resumeData.position}
+            value={resumeData ? resumeData.position : ''}
             onChange={handleChange}
           />
         </GridItem>
-        <GridItem colSpan={2}>
+        <GridItem colSpan={1}>
           <FormLabel htmlFor="contactInformation">Contact Information</FormLabel>
           <Input
             id="contactInformation"
             type="text"
             placeholder="Contact Information"
             name="contactInformation"
-            value={resumeData.contactInformation}
+            value={resumeData ? resumeData.contactInformation : ''}
             onChange={handleChange}
             minLength={10}
             maxLength={15}
@@ -61,7 +60,7 @@ const PersonalInformation = () => {
             type="email"
             placeholder="Email"
             name="email"
-            value={resumeData.email}
+            value={resumeData ? resumeData.email : ''}
             onChange={handleChange}
           />
         </GridItem>
@@ -72,19 +71,8 @@ const PersonalInformation = () => {
             type="text"
             placeholder="Address"
             name="address"
-            value={resumeData.address}
+            value={resumeData ? resumeData.address : ''}
             onChange={handleChange}
-          />
-        </GridItem>
-        <GridItem colSpan={2}>
-          <FormLabel htmlFor="profileImage">Profile Picture</FormLabel>
-          <Input
-            id="profileImage"
-            type="file"
-            name="profileImage"
-            accept="image/*"
-            onChange={handleProfilePicture}
-            placeholder="Profile Picture"
           />
         </GridItem>
       </Grid>

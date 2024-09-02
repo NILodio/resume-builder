@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react"; // Import ReactNode from the 'react' package
 
 import { useDesktopWidthCheck } from "../../functions/helpers/desktopWidthChecker";
 import MotionStack from "../motion/MotionStack";
@@ -18,7 +18,6 @@ const MainWrap = ({ children }: MainProps) => {
       initial="before"
       animate="after"
       width="100%"
-      maxWidth="48rem"
       pt="4rem"
       px={isDesktopWidth ? 1 : 3}
       mt={8}

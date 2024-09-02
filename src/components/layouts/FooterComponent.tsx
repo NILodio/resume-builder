@@ -4,7 +4,7 @@ const FooterComponent = () => (
   <Flex as="footer" py="4rem">
     <Text>
       <ChakraLink isExternal href="https://yehezgun.com">
-        <b>{new Date().getFullYear()} | Yehezkiel Gunawan</b>
+        <b>{new Date().getFullYear()} | Danilo Diaz</b>
       </ChakraLink>
     </Text>
   </Flex>
